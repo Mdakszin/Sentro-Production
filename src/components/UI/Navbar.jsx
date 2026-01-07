@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
+import { Link, useLocation } from 'react-router-dom'
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false)
@@ -19,7 +20,7 @@ export default function Navbar() {
                 }`}
         >
             <div className="container mx-auto px-6 flex justify-between items-center">
-                <a href="#" className="flex items-center gap-2">
+                <Link to="/" className="flex items-center gap-2">
                     {/* Logo placeholder */}
                     <div className="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center font-bold text-primary font-heading">
                         S
@@ -27,18 +28,18 @@ export default function Navbar() {
                     <span className="text-2xl font-heading font-bold text-white tracking-tight">
                         Sentro
                     </span>
-                </a>
+                </Link>
 
                 {/* Desktop Menu */}
                 <div className="hidden md:flex items-center gap-8">
                     {['Home', 'About', 'Faculties', 'Student Life', 'Contact'].map((item) => (
-                        <a
+                        <Link
                             key={item}
-                            href={`#${item.toLowerCase().replace(' ', '-')}`}
+                            to={item === 'Home' ? '/' : item === 'Faculties' ? '/faculties' : `/#${item.toLowerCase().replace(' ', '-')}`}
                             className="text-gray-300 hover:text-secondary font-medium transition-colors text-sm uppercase tracking-wider"
                         >
                             {item}
-                        </a>
+                        </Link>
                     ))}
                     <button className="bg-secondary text-primary px-6 py-2 rounded-full font-bold hover:bg-white transition-colors">
                         Apply Now
@@ -58,14 +59,14 @@ export default function Navbar() {
             {isOpen && (
                 <div className="absolute top-full left-0 w-full bg-primary/95 backdrop-blur-xl border-t border-white/10 p-6 flex flex-col gap-6 md:hidden">
                     {['Home', 'About', 'Faculties', 'Student Life', 'Contact'].map((item) => (
-                        <a
+                        <Link
                             key={item}
-                            href={`#${item.toLowerCase().replace(' ', '-')}`}
+                            to={item === 'Home' ? '/' : item === 'Faculties' ? '/faculties' : `/#${item.toLowerCase().replace(' ', '-')}`}
                             className="text-white hover:text-secondary font-heading text-xl"
                             onClick={() => setIsOpen(false)}
                         >
                             {item}
-                        </a>
+                        </Link>
                     ))}
                     <button className="bg-secondary text-primary w-full py-3 rounded-lg font-bold">
                         Apply Now

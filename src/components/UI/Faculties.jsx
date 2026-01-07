@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { Rocket, Calculator, HeartPulse, Scale, Code, Briefcase } from 'lucide-react'
 
 const faculties = [
@@ -40,20 +41,22 @@ export default function Faculties() {
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                             className="group relative p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300 overflow-hidden"
                         >
-                            <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity transform group-hover:scale-150 duration-500">
-                                <faculty.icon size={100} />
-                            </div>
+                            <Link to="/faculties" className="block h-full">
+                                <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity transform group-hover:scale-150 duration-500">
+                                    <faculty.icon size={100} />
+                                </div>
 
-                            <div className="relative z-10">
-                                <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center mb-4 text-accent">
-                                    <faculty.icon size={24} />
+                                <div className="relative z-10">
+                                    <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center mb-4 text-accent">
+                                        <faculty.icon size={24} />
+                                    </div>
+                                    <h3 className="text-2xl font-bold text-white mb-2">{faculty.title}</h3>
+                                    <p className="text-gray-400 text-sm mb-6">{faculty.desc}</p>
+                                    <div className="flex text-secondary font-bold text-sm uppercase tracking-wider items-center gap-2 group-hover:gap-4 transition-all">
+                                        View Programs <span className="text-xl">→</span>
+                                    </div>
                                 </div>
-                                <h3 className="text-2xl font-bold text-white mb-2">{faculty.title}</h3>
-                                <p className="text-gray-400 text-sm mb-6">{faculty.desc}</p>
-                                <div className="flex text-secondary font-bold text-sm uppercase tracking-wider items-center gap-2 group-hover:gap-4 transition-all">
-                                    View Programs <span className="text-xl">→</span>
-                                </div>
-                            </div>
+                            </Link>
                         </motion.div>
                     ))}
                 </div>

@@ -1,12 +1,10 @@
 import { Canvas } from '@react-three/fiber'
 import { Suspense } from 'react'
+import { Routes, Route } from 'react-router-dom'
 import Scene from './components/Scene'
 import Navbar from './components/UI/Navbar'
-import Hero from './components/UI/Hero'
-import About from './components/UI/About'
-import Faculties from './components/UI/Faculties'
-import StudentLife from './components/UI/StudentLife'
-import Contact from './components/UI/Contact'
+import Home from './pages/Home'
+import FacultiesPage from './pages/FacultiesPage'
 
 import { useEffect } from 'react'
 import Lenis from 'lenis'
@@ -46,11 +44,10 @@ function App() {
       {/* We use a wrapper for the content that scrolls normally */}
       <main className="relative z-10 w-full overflow-x-hidden">
         <Navbar />
-        <Hero />
-        <About />
-        <Faculties />
-        <StudentLife />
-        <Contact />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/faculties" element={<FacultiesPage />} />
+        </Routes>
       </main>
     </div>
   )
