@@ -12,6 +12,8 @@ import ApplyPage from './pages/ApplyPage'
 import StudentPortalPage from './pages/StudentPortalPage'
 import AcademicCalendarPage from './pages/AcademicCalendarPage'
 import CareersPage from './pages/CareersPage'
+import PrivacyPage from './pages/PrivacyPage'
+import TermsPage from './pages/TermsPage'
 
 import { useEffect } from 'react'
 import Lenis from 'lenis'
@@ -61,6 +63,8 @@ function App() {
           <Route path="/portal" element={<StudentPortalPage />} />
           <Route path="/calendar" element={<AcademicCalendarPage />} />
           <Route path="/careers" element={<CareersPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/terms" element={<TermsPage />} />
         </Routes>
       </main>
     </div>

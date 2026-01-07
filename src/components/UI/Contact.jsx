@@ -70,8 +70,8 @@ export default function Contact() {
                 <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
                     <p>&copy; {new Date().getFullYear()} Sentro. All rights reserved.</p>
                     <div className="flex gap-6 mt-4 md:mt-0">
-                        <a href="#" className="hover:text-white transition">Privacy Policy</a>
-                        <a href="#" className="hover:text-white transition">Terms of Service</a>
+                        <Link to="/privacy" className="hover:text-white transition">Privacy Policy</Link>
+                        <Link to="/terms" className="hover:text-white transition">Terms of Service</Link>
                     </div>
                 </div>
             </div>
