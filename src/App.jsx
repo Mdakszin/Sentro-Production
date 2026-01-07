@@ -8,7 +8,25 @@ import Faculties from './components/UI/Faculties'
 import StudentLife from './components/UI/StudentLife'
 import Contact from './components/UI/Contact'
 
+import { useEffect } from 'react'
+import Lenis from 'lenis'
+
 function App() {
+  useEffect(() => {
+    const lenis = new Lenis()
+
+    function raf(time) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+
+    requestAnimationFrame(raf)
+
+    return () => {
+      lenis.destroy()
+    }
+  }, [])
+
   return (
     <div className="relative w-full bg-primary">
       {/* 3D Background */}
