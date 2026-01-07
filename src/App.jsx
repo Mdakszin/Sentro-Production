@@ -5,6 +5,13 @@ import Scene from './components/Scene'
 import Navbar from './components/UI/Navbar'
 import Home from './pages/Home'
 import FacultiesPage from './pages/FacultiesPage'
+import AboutPage from './pages/AboutPage'
+import StudentLifePage from './pages/StudentLifePage'
+import ContactPage from './pages/ContactPage'
+import ApplyPage from './pages/ApplyPage'
+import StudentPortalPage from './pages/StudentPortalPage'
+import AcademicCalendarPage from './pages/AcademicCalendarPage'
+import CareersPage from './pages/CareersPage'
 
 import { useEffect } from 'react'
 import Lenis from 'lenis'
@@ -47,6 +54,13 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/faculties" element={<FacultiesPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/student-life" element={<StudentLifePage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/apply" element={<ApplyPage />} />
+          <Route path="/portal" element={<StudentPortalPage />} />
+          <Route path="/calendar" element={<AcademicCalendarPage />} />
+          <Route path="/careers" element={<CareersPage />} />
         </Routes>
       </main>
     </div>

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { MapPin, Phone, Mail, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react'
 
 export default function Contact() {
@@ -29,10 +30,10 @@ export default function Contact() {
                     <div>
                         <h4 className="text-white font-bold mb-6">Quick Links</h4>
                         <ul className="space-y-4 text-gray-400">
-                            <li><a href="#" className="hover:text-secondary transition">Apply Now</a></li>
-                            <li><a href="#" className="hover:text-secondary transition">Student Portal</a></li>
-                            <li><a href="#" className="hover:text-secondary transition">Academic Calendar</a></li>
-                            <li><a href="#" className="hover:text-secondary transition">Careers</a></li>
+                            <li><Link to="/apply" className="hover:text-secondary transition">Apply Now</Link></li>
+                            <li><Link to="/portal" className="hover:text-secondary transition">Student Portal</Link></li>
+                            <li><Link to="/calendar" className="hover:text-secondary transition">Academic Calendar</Link></li>
+                            <li><Link to="/careers" className="hover:text-secondary transition">Careers</Link></li>
                         </ul>
                     </div>
 

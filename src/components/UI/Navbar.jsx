@@ -5,6 +5,7 @@ import { Link, useLocation } from 'react-router-dom'
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false)
     const [scrolled, setScrolled] = useState(false)
+    const location = useLocation()
 
     useEffect(() => {
         const handleScroll = () => {
@@ -13,6 +14,11 @@ export default function Navbar() {
         window.addEventListener('scroll', handleScroll)
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
+
+    // Close mobile menu when route changes
+    useEffect(() => {
+        setIsOpen(false)
+    }, [location])
 
     return (
         <nav
@@ -35,15 +41,15 @@ export default function Navbar() {
                     {['Home', 'About', 'Faculties', 'Student Life', 'Contact'].map((item) => (
                         <Link
                             key={item}
-                            to={item === 'Home' ? '/' : item === 'Faculties' ? '/faculties' : `/#${item.toLowerCase().replace(' ', '-')}`}
+                            to={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`}
                             className="text-gray-300 hover:text-secondary font-medium transition-colors text-sm uppercase tracking-wider"
                         >
                             {item}
                         </Link>
                     ))}
-                    <button className="bg-secondary text-primary px-6 py-2 rounded-full font-bold hover:bg-white transition-colors">
+                    <Link to="/apply" className="bg-secondary text-primary px-6 py-2 rounded-full font-bold hover:bg-white transition-colors">
                         Apply Now
-                    </button>
+                    </Link>
                 </div>
 
                 {/* Mobile Toggle */}
@@ -57,20 +63,19 @@ export default function Navbar() {
 
             {/* Mobile Menu */}
             {isOpen && (
-                <div className="absolute top-full left-0 w-full bg-primary/95 backdrop-blur-xl border-t border-white/10 p-6 flex flex-col gap-6 md:hidden">
+                <div className="absolute top-full left-0 w-full bg-primary/95 backdrop-blur-xl border-t border-white/10 p-6 flex flex-col gap-6 md:hidden h-screen">
                     {['Home', 'About', 'Faculties', 'Student Life', 'Contact'].map((item) => (
                         <Link
                             key={item}
-                            to={item === 'Home' ? '/' : item === 'Faculties' ? '/faculties' : `/#${item.toLowerCase().replace(' ', '-')}`}
+                            to={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`}
                             className="text-white hover:text-secondary font-heading text-xl"
-                            onClick={() => setIsOpen(false)}
                         >
                             {item}
                         </Link>
                     ))}
-                    <button className="bg-secondary text-primary w-full py-3 rounded-lg font-bold">
+                    <Link to="/apply" className="bg-secondary text-primary w-full py-3 rounded-lg font-bold text-center">
                         Apply Now
-                    </button>
+                    </Link>
                 </div>
             )}
         </nav>
