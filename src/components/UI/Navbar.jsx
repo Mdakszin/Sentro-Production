@@ -38,15 +38,21 @@ export default function Navbar() {
 
                 {/* Desktop Menu */}
                 <div className="hidden md:flex items-center gap-8">
-                    {['Home', 'About', 'Faculties', 'Student Life', 'Contact'].map((item) => (
-                        <Link
-                            key={item}
-                            to={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`}
-                            className="text-gray-300 hover:text-secondary font-medium transition-colors text-sm uppercase tracking-wider"
-                        >
-                            {item}
-                        </Link>
-                    ))}
+                    {['Home', 'About', 'Faculties', 'Student Life', 'Contact'].map((item) => {
+                        const path = item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`
+                        const isActive = location.pathname === path
+
+                        return (
+                            <Link
+                                key={item}
+                                to={path}
+                                className={`font-medium transition-colors text-sm uppercase tracking-wider ${isActive ? 'text-secondary font-bold' : 'text-gray-300 hover:text-secondary'
+                                    }`}
+                            >
+                                {item}
+                            </Link>
+                        )
+                    })}
                     <Link to="/apply" className="bg-secondary text-primary px-6 py-2 rounded-full font-bold hover:bg-white transition-colors">
                         Apply Now
                     </Link>

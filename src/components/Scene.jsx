@@ -3,7 +3,7 @@ import { useFrame, useThree } from '@react-three/fiber'
 import { Environment, Float, Stars, ScrollControls, useScroll, Text } from '@react-three/drei'
 import * as THREE from 'three'
 
-function Box({ position, rotation }) {
+function Box({ position, rotation, color }) {
     const meshRef = useRef(null)
 
     useFrame((state, delta) => {
@@ -18,8 +18,8 @@ function Box({ position, rotation }) {
             <mesh ref={meshRef} position={position} rotation={rotation}>
                 <dodecahedronGeometry args={[1, 0]} />
                 <meshStandardMaterial
-                    color="#eab308"
-                    emissive="#eab308"
+                    color={color}
+                    emissive={color}
                     emissiveIntensity={0.2}
                     wireframe
                     transparent
@@ -48,19 +48,32 @@ function MovingStars() {
     )
 }
 
-function SceneContent() {
+function SceneContent({ route }) {
+    // Determine color based on route
+    const getTheme = () => {
+        switch (route) {
+            case '/about': return '#3b82f6' // Blue
+            case '/faculties': return '#10b981' // Emerald
+            case '/student-life': return '#f43f5e' // Rose
+            case '/contact': return '#8b5cf6' // Violet
+            default: return '#eab308' // Default Yellow/Gold
+        }
+    }
+
+    const themeColor = getTheme()
+
     return (
         <>
             <ambientLight intensity={0.5} />
             <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} />
 
-            <MovingStars />
+            <MovingStars color={themeColor} />
 
             <group position={[0, 0, -5]}>
                 {/* Background Elements */}
-                <Box position={[-5, 2, -10]} rotation={[0, 0, 0]} />
-                <Box position={[6, -3, -15]} rotation={[1, 1, 0]} />
-                <Box position={[-8, -5, -20]} rotation={[0.5, 0.5, 0]} />
+                <Box position={[-5, 2, -10]} rotation={[0, 0, 0]} color={themeColor} />
+                <Box position={[6, -3, -15]} rotation={[1, 1, 0]} color={themeColor} />
+                <Box position={[-8, -5, -20]} rotation={[0.5, 0.5, 0]} color={themeColor} />
             </group>
 
             <Environment preset="city" />
@@ -68,10 +81,10 @@ function SceneContent() {
     )
 }
 
-export default function Scene() {
+export default function Scene({ route }) {
     return (
         <ScrollControls pages={5} damping={0.3}>
-            <SceneContent />
+            <SceneContent route={route} />
         </ScrollControls>
     )
 }

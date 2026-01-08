@@ -1,6 +1,7 @@
 import { Canvas } from '@react-three/fiber'
 import { Suspense } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
+import { AnimatePresence } from 'framer-motion'
 import Scene from './components/Scene'
 import Navbar from './components/UI/Navbar'
 import Home from './pages/Home'
@@ -14,11 +15,15 @@ import AcademicCalendarPage from './pages/AcademicCalendarPage'
 import CareersPage from './pages/CareersPage'
 import PrivacyPage from './pages/PrivacyPage'
 import TermsPage from './pages/TermsPage'
+import NotFoundPage from './pages/NotFoundPage'
+import ScrollToTop from './components/Utils/ScrollToTop'
 
 import { useEffect } from 'react'
 import Lenis from 'lenis'
 
 function App() {
+  const location = useLocation()
+
   useEffect(() => {
     const lenis = new Lenis()
 
@@ -44,7 +49,7 @@ function App() {
           camera={{ position: [0, 0, 15], fov: 45 }}
         >
           <Suspense fallback={null}>
-            <Scene />
+            <Scene route={location.pathname} />
           </Suspense>
         </Canvas>
       </div>
@@ -53,19 +58,23 @@ function App() {
       {/* We use a wrapper for the content that scrolls normally */}
       <main className="relative z-10 w-full overflow-x-hidden">
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/faculties" element={<FacultiesPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/student-life" element={<StudentLifePage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/apply" element={<ApplyPage />} />
-          <Route path="/portal" element={<StudentPortalPage />} />
-          <Route path="/calendar" element={<AcademicCalendarPage />} />
-          <Route path="/careers" element={<CareersPage />} />
-          <Route path="/privacy" element={<PrivacyPage />} />
-          <Route path="/terms" element={<TermsPage />} />
-        </Routes>
+        <ScrollToTop />
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<Home />} />
+            <Route path="/faculties" element={<FacultiesPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/student-life" element={<StudentLifePage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/apply" element={<ApplyPage />} />
+            <Route path="/portal" element={<StudentPortalPage />} />
+            <Route path="/calendar" element={<AcademicCalendarPage />} />
+            <Route path="/careers" element={<CareersPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/terms" element={<TermsPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </AnimatePresence>
       </main>
     </div>
   )

@@ -16,7 +16,7 @@ export default function AboutPage() {
                         className="text-center mb-16"
                     >
                         <h1 className="text-5xl md:text-7xl font-bold font-heading text-white mb-6">
-                            About <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-accent">Sentro</span>
+                            About <span className="text-transparent bg-clip-text bg-linear-to-r from-secondary to-accent">Sentro</span>
                         </h1>
                         <p className="text-gray-300 text-lg max-w-3xl mx-auto leading-relaxed">
                             Sentro (formerly Gauteng City College) is a premier educational institution dedicated to empowering the next generation of leaders. We bridge the gap between academic theory and practical application.
@@ -57,7 +57,7 @@ export default function AboutPage() {
                             transition={{ duration: 0.8 }}
                             className="h-[400px] bg-white/5 rounded-3xl border border-white/10 flex items-center justify-center relative overflow-hidden group"
                         >
-                            <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 to-accent/10 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                            <div className="absolute inset-0 bg-linear-to-br from-secondary/10 to-accent/10 opacity-50 group-hover:opacity-100 transition-opacity"></div>
                             <span className="text-gray-500 font-bold uppercase tracking-widest z-10">Campus Image Placeholder</span>
                         </motion.div>
                     </div>
