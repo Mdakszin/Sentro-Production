@@ -15,6 +15,7 @@ import AcademicCalendarPage from './pages/AcademicCalendarPage'
 import CareersPage from './pages/CareersPage'
 import PrivacyPage from './pages/PrivacyPage'
 import TermsPage from './pages/TermsPage'
+import EventsPage from './pages/EventsPage'
 import NotFoundPage from './pages/NotFoundPage'
 import ScrollToTop from './components/Utils/ScrollToTop'
 
@@ -72,6 +73,7 @@ function App() {
             <Route path="/careers" element={<CareersPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/terms" element={<TermsPage />} />
+            <Route path="/events" element={<EventsPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </AnimatePresence>

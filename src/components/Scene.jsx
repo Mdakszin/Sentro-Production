@@ -64,6 +64,7 @@ function SceneContent({ route }) {
         switch (route) {
             case '/about': return '#3b82f6' // Blue
             case '/faculties': return '#10b981' // Emerald
+            case '/events': return '#f97316' // Orange
             case '/student-life': return '#f43f5e' // Rose
             case '/contact': return '#8b5cf6' // Violet
             default: return '#eab308' // Default Yellow/Gold

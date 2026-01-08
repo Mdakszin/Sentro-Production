@@ -31,6 +31,7 @@ export default function Contact() {
                         <h4 className="text-white font-bold mb-6">Quick Links</h4>
                         <ul className="space-y-4 text-gray-400">
                             <li><Link to="/apply" className="hover:text-secondary transition">Apply Now</Link></li>
+                            <li><Link to="/events" className="hover:text-secondary transition">Events</Link></li>
                             <li><Link to="/portal" className="hover:text-secondary transition">Student Portal</Link></li>
                             <li><Link to="/calendar" className="hover:text-secondary transition">Academic Calendar</Link></li>
                             <li><Link to="/careers" className="hover:text-secondary transition">Careers</Link></li>

@@ -38,7 +38,7 @@ export default function Navbar() {
 
                 {/* Desktop Menu */}
                 <div className="hidden md:flex items-center gap-8">
-                    {['Home', 'About', 'Faculties', 'Student Life', 'Contact'].map((item) => {
+                    {['Home', 'About', 'Faculties', 'Events', 'Student Life', 'Contact'].map((item) => {
                         const path = item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`
                         const isActive = location.pathname === path
 
@@ -70,7 +70,7 @@ export default function Navbar() {
             {/* Mobile Menu */}
             {isOpen && (
                 <div className="absolute top-full left-0 w-full bg-primary/95 backdrop-blur-xl border-t border-white/10 p-6 flex flex-col gap-6 md:hidden h-screen">
-                    {['Home', 'About', 'Faculties', 'Student Life', 'Contact'].map((item) => (
+                    {['Home', 'About', 'Faculties', 'Events', 'Student Life', 'Contact'].map((item) => (
                         <Link
                             key={item}
                             to={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`}
